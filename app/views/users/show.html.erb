@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+<% if @user.address.any? %>
+    <% @user.address.each do |address| %>
+      <p>
+        <strong>Address Name:</strong>
+        <td><%= address.city %></td>
+      </p>
+    <% end %>
+<% end %>
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
