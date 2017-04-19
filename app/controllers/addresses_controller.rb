@@ -61,6 +61,11 @@ class AddressesController < ApplicationController
     end
   end
 
+  def import
+    Address.import(params[:file])
+    redirect_to users_url, notice: "Endereço adicionado."
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_address

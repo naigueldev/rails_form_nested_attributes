@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  resources :addresses
+  resources :addresses do
+    collection { post :import }
+  end
   resources :users do
     resources :addresses
+    collection { post :import }
   end
 
   root 'users#index'

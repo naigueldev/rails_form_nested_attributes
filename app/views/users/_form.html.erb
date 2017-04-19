@@ -30,3 +30,10 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<h3>Import Addresses</h3>
+<%= form_tag import_users_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Upload Address" %>
+
+<% end %>
