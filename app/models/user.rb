@@ -4,11 +4,14 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :address, allow_destroy: true,
   reject_if: proc { |attributes| attributes['city'].blank? }
 
-  # def self.import(file, user_id)
-  #   CSV.foreach(file.path, headers: true) do |row|
-  #     # Address.where(:user_id => user_id).create! row.to_hash
-  #   end
-  # end
+  def self.import(file, user_id)
+    CSV.foreach(file.path, headers: true) do |row|
+      Address.create(
+        :user_id => user_id,
+        :city => row[0]
+      )
+    end
+  end
 
 
 end

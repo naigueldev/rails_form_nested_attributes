@@ -8,17 +8,17 @@ class Address < ApplicationRecord
   #   end
   # end
 
-  def self.import(file)
-    CSV.foreach(file.path, headers: true, :header_converters => :symbol) do |row|
-      player_hash = row.to_hash
-      teamname = player_hash[:user]
-      teamhash = User.where(:name => teamname).first
-      hashid = teamhash.id
-      player_newhash = player_hash.reject!{ |k| k == :user}
-      player_newhash[:user_id] = hashid
-      Address.create!(player_newhash)
-    end
-  end
+  # def self.import(file)
+  #   CSV.foreach(file.path, headers: true, :header_converters => :symbol) do |row|
+  #     player_hash = row.to_hash
+  #     teamname = player_hash[:user]
+  #     teamhash = User.where(:name => teamname).first
+  #     hashid = teamhash.id
+  #     player_newhash = player_hash.reject!{ |k| k == :user}
+  #     player_newhash[:user_id] = hashid
+  #     Address.create!(player_newhash)
+  #   end
+  # end
 
   # def self.import(file)
   #   CSV.foreach(file.path, headers: true, :header_converters => :symbol) do |row|

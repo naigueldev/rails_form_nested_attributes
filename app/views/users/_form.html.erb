@@ -32,7 +32,7 @@
 <% end %>
 
 <h3>Import Addresses</h3>
-<%= form_tag import_users_path, multipart: true do %>
+<%= form_tag import_users_path(:user_id => user.id), multipart: true do %>
   <%= file_field_tag :file %>
   <%= submit_tag "Upload Address" %>
 

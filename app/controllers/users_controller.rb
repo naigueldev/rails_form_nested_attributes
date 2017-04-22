@@ -65,7 +65,9 @@ class UsersController < ApplicationController
 
   def import
     # @user = User.find(params[:id])
-    Address.import(params[:file])
+    # @user = User.new
+    # @user = User.id
+    User.import(params[:file], params[:user_id] )
     redirect_to users_path, notice: "User Endereço adicionado"
   end
 
@@ -77,6 +79,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, address_attributes:[:city, :id,:_destroy])
+      params.require(:user).permit(:id, :name, address_attributes:[:city, :id,:_destroy])
     end
 end
